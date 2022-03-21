@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+    <div id="show-repos"></div>
+</body>
+
+</html>
+
+<script type="module">
+
+    import header from "./components/header.js";
+    // console.log(header);
+
+    let navbar = document.getElementById("navbar");
+    navbar.innerHTML = header();
+
+    let input_box = document.getElementById("search-input")
+    input_box.addEventListener("keypress", () => {
+
+        getData(event);
+
+    });
+    let img = document.getElementById("profile-img");
+
+    const getData = async (e) => {
+        // console.log("e:",e);
+        try{
+              // console.log("e":e);
+        if(e.code === "Enter") {
+            let input = input_box.value;
+            let res = await fetch(`https://api.github.com/users/${input}/repos`);
+            let data = await res.json();
+            console.log("data:", data);
+            img.src = data[0].owner.avatar_url;
+            showrepo(data)
+        }
+    }
+        catch(err){
+            console.log("err:",err);
+        }
+
+    };
+   
+    const  showrepo = (data,parent) =>{
+
+        data.forEach((el) =>{
+            
+            let div = document.createElement("div");
+            div.style.margin = "10px";
+            let parent = document.getElementById("show-repos")
+
+            let repo_name = document.createElement("p");
+            repo_name.innerText= el.full_name;
+            repo_name.style.background = "linear-gradient(rgb(233, 162, 162) ,rgb(207, 226, 169),rgb(230, 178, 230))"
+            repo_name.style.height = "50px";
+            repo_name.style.width = "250px";
+            repo_name.style.display = "flex";
+            repo_name.style.justifyContent = "center";
+            repo_name.style.alignItems = "center";
+            repo_name.style.color =  "darkgreen";
+            repo_name.style.boxShadow = "rgba(30, 160, 117, 0.4) 5px 5px, rgba(230, 45, 162, 0.3) 10px 10px, rgba(71, 149, 223, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px";
+
+           
+            let repoLink = document.createElement("a");
+            repoLink.href = el.url;
+
+            repoLink.append(repo_name);
+            
+
+            div.append(repoLink);
+            parent.append(div)
+
+        });
+    }
+
+
+    // full_name
+    // ssh_url
+    // url
+
+
+</script>

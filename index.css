@@ -1,0 +1,68 @@
+body {
+    margin: 0px;
+  }
+  #navbar {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    color: white;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  #logo {
+    width: 5%;
+    text-align: right;
+  }
+  #logo img {
+    width: 60%;
+    border-radius: 80%;
+    padding: 9px;
+  }
+  #profile img {
+    border-radius: 80%;
+    width: 50%;
+    height: 35px;
+    padding-top: 7%;
+  }
+  #search {
+    width: 10%;
+    padding: 12px;
+  }
+  ul {
+    padding-left: -4px;
+  }
+  
+  #list li {
+    display: inline;
+    margin-right: 5%;
+  }
+  #options {
+    width: 75%;
+  }
+  #profile {
+    width: 5%;
+  }
+  
+  
+  #main{
+  padding: 3%;
+  }
+
+  #show-repos{
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      /* width: 250px; */
+      height:300px ;
+      text-align:center;
+      align-items: center;
+      /* margin-left: 500px; */
+      /* box-shadow: rgba(30, 160, 117, 0.4) 5px 5px, rgba(230, 45, 162, 0.3) 10px 10px, rgba(71, 149, 223, 0.2) 15px 15px, rgba(206, 109, 170, 0.1) 20px 20px, rgba(43, 165, 104, 0.05) 25px 25px; */
+      /* background: linear-gradient(rgb(233, 162, 162) ,rgb(207, 226, 169),rgb(230, 178, 230)); */
+  }
+  
+  
+ 
